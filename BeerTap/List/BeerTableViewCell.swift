@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AlamofireImage
 
 class BeerTableViewCell: UITableViewCell {
     
@@ -29,13 +30,15 @@ class BeerTableViewCell: UITableViewCell {
     
     var iconString: String? {
         didSet {
-            
+            if let url = URL(string: iconString ?? "") {
+                iconImageView.af.setImage(withURL: url)
+            }
         }
     }
     
-    var isFavourite: Bool? {
+    var isFavourite: Bool = false {
         didSet {
-            
+            favouriteButton.tintColor = isFavourite ? .yellow : .gray
         }
     }
 }

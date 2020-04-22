@@ -17,8 +17,8 @@ protocol ListViewPresentable {
     //func showDetail(for rowIndex: Int)
     func refreshList()
     var beerList: [Beer] { get set }
-//    var queryManager: QueryManager { get set }
-    //var coordinator: AppCoordinator? { get set }
+    var queryManager: QueryManager { get set }
+    var coordinator: AppCoordinator? { get set }
 }
 
 enum ListViewState {
@@ -28,7 +28,14 @@ enum ListViewState {
 }
 
 class ListViewPresenter: ListViewPresentable {
-    var beerList: [Beer] = []
+    var coordinator: AppCoordinator?
+    
+    var queryManager: QueryManager
+    var beerList: [Beer] = [] {
+        didSet {
+            coordinator?.reloadList()
+        }
+    }
     
     var rowCount: Int {
         return beerList.count
@@ -41,7 +48,7 @@ class ListViewPresenter: ListViewPresentable {
     var state: ListViewState = .loading {
         didSet {
             stateMessage = stateMessage(state)
-//            coordinator?.updateStateFeedback()
+            coordinator?.updateStateFeedback()
         }
     }
     
@@ -55,17 +62,21 @@ class ListViewPresenter: ListViewPresentable {
             return "Something went wrong. Pull to refresh"
         }
     }
+    
+    init(queryManager: QueryManager) {
+        self.queryManager = queryManager
+    }
 
     func refreshList() {
         state = .loading
-//        queryManager.loadFruitList { (fruitBasket: FruitBasket?, errorMessage: String?) in
-//            if let basket = fruitBasket {
-//                self.fruitList = basket.fruit
-//                self.state = .resultsLoaded
-//            }
-//            if let _ = errorMessage {
-//                self.state = .error
-//            }
-//        }
+        queryManager.loadBeerList { (beers: [Beer]?, errorMessage: String?) in
+            if let list = beers {
+                self.beerList = list
+                self.state = .resultsLoaded
+            }
+            if let _ = errorMessage {
+                self.state = .error
+            }
+        }
     }
 }

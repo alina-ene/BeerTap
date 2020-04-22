@@ -36,6 +36,10 @@ class ListViewController: UIViewController, Storyboarded {
         messageLabel.text = presenter.stateMessage
     }
 
+    func reloadList() {
+        refreshControl.endRefreshing()
+        tableView.reloadData()
+    }
 }
 
 extension ListViewController: UITableViewDelegate {
