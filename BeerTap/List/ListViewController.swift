@@ -28,6 +28,11 @@ class ListViewController: UIViewController, Storyboarded {
         updateStateFeedback()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        tableView.reloadData()
+    }
+    
     @objc func refresh(_ sender: Any) {
         presenter.refreshList()
     }
