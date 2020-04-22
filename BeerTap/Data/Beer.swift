@@ -26,7 +26,7 @@ struct Beer: Decodable {
     let abv: Double
 //    let ibu: Double
     let icon: String
-//    let description: String
+    let description: String
 //    let foodPairings: [String]?
 //    let brewersTips: String?
 //    let contributor: String?
@@ -42,7 +42,7 @@ struct Beer: Decodable {
 //    let target_og: Double
     
     enum CodingKeys: String, CodingKey {
-        case id, name, abv//, tagline, abv, ibu, description, ingredients, attenuation_level, srm, ph, ebc, target_fg, target_og, boil_volume, volume, method
+        case id, name, abv, description//, tagline, abv, ibu, description, ingredients, attenuation_level, srm, ph, ebc, target_fg, target_og, boil_volume, volume, method
 //        case contributor = "contributed_by"
 //        case brewersTips = "brewers_tips"
 //        case foodPairings = "food_pairing"

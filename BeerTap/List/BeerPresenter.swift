@@ -8,7 +8,15 @@
 
 import Foundation
 
-class BeerPresenter {
+protocol BeerPresentable {
+    var isFavourite: Bool { get set }
+    var title: String { get }
+    var abv: String { get }
+    var imageUrl: URL? { get }
+    var description: String { get }
+}
+
+class BeerPresenter: BeerPresentable {
     
     private let beer: Beer
     
@@ -35,5 +43,9 @@ class BeerPresenter {
     
     var imageUrl: URL? {
         return URL(string: beer.icon)
+    }
+    
+    var description: String {
+        return beer.description
     }
 }

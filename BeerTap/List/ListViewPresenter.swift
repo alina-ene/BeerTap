@@ -13,11 +13,12 @@ protocol ListViewPresentable {
     var sectionTitle: String { get }
     var stateMessage: String { get }
     var refreshControlMessage: String { get }
-    func beerPresenter(at index: Int) -> BeerPresenter?
+    func beerPresenter(at index: Int) -> BeerPresentable?
     func refreshList()
     var beerList: [Beer] { get set }
     var queryManager: QueryManager { get set }
     var coordinator: AppCoordinator? { get set }
+    func selectRow(at index: Int)
 }
 
 enum ListViewState {
@@ -79,10 +80,16 @@ class ListViewPresenter: ListViewPresentable {
         }
     }
     
-    func beerPresenter(at index: Int) -> BeerPresenter? {
+    func beerPresenter(at index: Int) -> BeerPresentable? {
         if index > -1 && index < rowCount {
             return BeerPresenter(beer: beerList[index])
         }
         return nil
+    }
+    
+    func selectRow(at index: Int) {
+        if let presenter = beerPresenter(at: index) {
+            coordinator?.launchDetailScreen(beerPresenter: presenter)
+        }
     }
 }
