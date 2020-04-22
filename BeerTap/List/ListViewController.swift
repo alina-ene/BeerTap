@@ -24,6 +24,7 @@ class ListViewController: UIViewController, Storyboarded {
         refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
         tableView.addSubview(refreshControl)
         
+        presenter.refreshList()
         updateStateFeedback()
     }
     
@@ -56,9 +57,7 @@ extension ListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if let cell = tableView.dequeueReusableCell(withIdentifier: BeerTableViewCell.identifier, for: indexPath) as? BeerTableViewCell {
-            cell.title = ""
-            cell.abv = ""
-            cell.iconString = ""
+            cell.beerPresenter = presenter.beerPresenter(at: indexPath.row)
            return cell
         }
         

@@ -3,11 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		7373A1719E2BCBF65E0FF0C1 /* Pods_BeerTap_BeerTapUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83D8970B78CB0DE3ED0465D3 /* Pods_BeerTap_BeerTapUITests.framework */; };
+		AC51C7BF2450E07200BE648F /* BeerPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC51C7BE2450E07100BE648F /* BeerPresenter.swift */; };
 		AC6C5F39245036340029C691 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6C5F38245036340029C691 /* AppDelegate.swift */; };
 		AC6C5F3B245036340029C691 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6C5F3A245036340029C691 /* SceneDelegate.swift */; };
 		AC6C5F3D245036340029C691 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6C5F3C245036340029C691 /* ListViewController.swift */; };
@@ -52,6 +53,7 @@
 		4D7562FD76BC949D8C51BCFF /* Pods-BeerTap-BeerTapUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeerTap-BeerTapUITests.debug.xcconfig"; path = "Target Support Files/Pods-BeerTap-BeerTapUITests/Pods-BeerTap-BeerTapUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		83D8970B78CB0DE3ED0465D3 /* Pods_BeerTap_BeerTapUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BeerTap_BeerTapUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA4AA2FB92BBE3E3300159E8 /* Pods-BeerTap-BeerTapUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeerTap-BeerTapUITests.release.xcconfig"; path = "Target Support Files/Pods-BeerTap-BeerTapUITests/Pods-BeerTap-BeerTapUITests.release.xcconfig"; sourceTree = "<group>"; };
+		AC51C7BE2450E07100BE648F /* BeerPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerPresenter.swift; sourceTree = "<group>"; };
 		AC6C5F35245036340029C691 /* BeerTap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeerTap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC6C5F38245036340029C691 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AC6C5F3A245036340029C691 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -127,7 +129,6 @@
 				E87A804832A79B2A875EC2AC /* Pods-BeerTapTests.debug.xcconfig */,
 				CAECF722E7401BADEACE373D /* Pods-BeerTapTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -196,6 +197,7 @@
 				AC6C5F3C245036340029C691 /* ListViewController.swift */,
 				AC6C5F7224503B540029C691 /* ListViewPresenter.swift */,
 				AC6C5F6C245037EE0029C691 /* BeerTableViewCell.swift */,
+				AC51C7BE2450E07100BE648F /* BeerPresenter.swift */,
 			);
 			path = List;
 			sourceTree = "<group>";
@@ -464,6 +466,7 @@
 				AC6C5F75245043090029C691 /* Storyboarded.swift in Sources */,
 				AC6C5F692450378A0029C691 /* DetailViewController.swift in Sources */,
 				AC6C5F77245047660029C691 /* Beer.swift in Sources */,
+				AC51C7BF2450E07200BE648F /* BeerPresenter.swift in Sources */,
 				AC6C5F6D245037EE0029C691 /* BeerTableViewCell.swift in Sources */,
 				AC6C5F7A24508BB60029C691 /* QueryManager.swift in Sources */,
 				AC6C5F71245039BF0029C691 /* AppCoordinator.swift in Sources */,

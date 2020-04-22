@@ -10,11 +10,10 @@ import Foundation
 
 protocol ListViewPresentable {
     var rowCount: Int { get }
-   // func text(for rowIndex: Int) -> String?
     var sectionTitle: String { get }
     var stateMessage: String { get }
     var refreshControlMessage: String { get }
-    //func showDetail(for rowIndex: Int)
+    func beerPresenter(at index: Int) -> BeerPresenter?
     func refreshList()
     var beerList: [Beer] { get set }
     var queryManager: QueryManager { get set }
@@ -78,5 +77,12 @@ class ListViewPresenter: ListViewPresentable {
                 self.state = .error
             }
         }
+    }
+    
+    func beerPresenter(at index: Int) -> BeerPresenter? {
+        if index > -1 && index < rowCount {
+            return BeerPresenter(beer: beerList[index])
+        }
+        return nil
     }
 }

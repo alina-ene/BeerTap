@@ -34,7 +34,7 @@ class AppCoordinator {
     }
     
     func reloadList() {
-        
+        listVC.reloadList()
     }
     
     func updateStateFeedback() {

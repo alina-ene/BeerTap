@@ -16,29 +16,27 @@ class BeerTableViewCell: UITableViewCell {
     @IBOutlet private var abvLabel: UILabel!
     @IBOutlet private var favouriteButton: UIButton!
     
-    var title: String? {
+    var beerPresenter: BeerPresenter? {
         didSet {
-            titleLabel.text = title
-        }
-    }
-    
-    var abv: String? {
-        didSet {
-            abvLabel.text = abv
-        }
-    }
-    
-    var iconString: String? {
-        didSet {
-            if let url = URL(string: iconString ?? "") {
-                iconImageView.af.setImage(withURL: url)
+            if let presenter = beerPresenter {
+                titleLabel.text = presenter.title
+                abvLabel.text = presenter.abv
+                if let url = presenter.imageUrl {
+                    iconImageView.af.setImage(withURL: url)
+                }
+                let image = UIImage(named: "star")?.withRenderingMode(.alwaysTemplate)
+                favouriteButton.setImage(image, for: .normal)
+                favouriteButton.tintColor = presenter.isFavourite ? .yellow : .gray
+                favouriteButton.addTarget(self, action: #selector(toggleFav), for: .touchUpInside)
             }
         }
     }
     
-    var isFavourite: Bool = false {
-        didSet {
-            favouriteButton.tintColor = isFavourite ? .yellow : .gray
+    @objc func toggleFav() {
+        if let presenter = beerPresenter {
+            presenter.isFavourite = !presenter.isFavourite
+            favouriteButton.tintColor = presenter.isFavourite ? .yellow : .gray
         }
+        
     }
 }
