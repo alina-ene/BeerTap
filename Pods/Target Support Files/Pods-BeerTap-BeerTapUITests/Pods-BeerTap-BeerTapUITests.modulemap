@@ -1,0 +1,6 @@
+framework module Pods_BeerTap_BeerTapUITests {
+  umbrella header "Pods-BeerTap-BeerTapUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
