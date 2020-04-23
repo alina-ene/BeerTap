@@ -21,8 +21,6 @@ class QueryManager {
         let parameters = ["page": page.description, "per_page": pageCount.description]
         AF.request(BeerTapUrl.baseUrl.rawValue, parameters: parameters)
     .validate()
-//        .validate(statusCode: 200..<300)
-//        .validate(contentType: ["application/json"])
         .responseDecodable(of: [FailableDecodable<Beer>].self) { (response) in
           guard let throwables = response.value else {
             completion(nil, "error")
@@ -30,24 +28,5 @@ class QueryManager {
             }
             completion(throwables.compactMap { $0.base }, nil)
         }
-//        .response { response in
-//
-//            var errorMessage: String?
-//            var beers: [Beer]?
-//
-//            switch response.result {
-//            case .success:
-//                print("Validation Successful")
-//                do {
-//                    beers = try JSONDecoder().decode([Beer].self, from: response.value as! Data)
-//                } catch let parseError as NSError {
-//                    errorMessage = parseError.localizedDescription
-//                }
-//            case let .failure(error):
-//                print(error)
-//                errorMessage = error.localizedDescription
-//            }
-//            completion(beers, errorMessage)
-//        }
     }
 }

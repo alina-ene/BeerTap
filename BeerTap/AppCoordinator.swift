@@ -30,8 +30,6 @@ class AppCoordinator {
     
     private lazy var detailVC: DetailViewController = {
         let vc = DetailViewController.instantiate()
-//        vc.presenter = ListViewPresenter(queryManager: queryManager)
-//        vc.presenter.coordinator = self
         return vc
     }()
     
