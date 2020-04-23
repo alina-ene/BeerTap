@@ -14,6 +14,12 @@ class DetailViewController: UIViewController, Storyboarded {
     @IBOutlet private var abvLabel: UILabel!
     @IBOutlet private var iconImageView: UIImageView!
     @IBOutlet private var descriptionLabel: UILabel!
+    @IBOutlet private var foodPairingsLabel: UILabel!
+    @IBOutlet private var maltLabel: UILabel!
+    @IBOutlet private var hopsLabel: UILabel!
+    @IBOutlet private var yeastLabel: UILabel!
+    @IBOutlet private var scrollView: UIScrollView!
+    @IBOutlet private var stackView: UIStackView!
     
     var presenter: BeerPresentable!
     
@@ -28,6 +34,12 @@ class DetailViewController: UIViewController, Storyboarded {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        stackView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 10).isActive = true
+        stackView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: 10).isActive = true
+        stackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
+        stackView.topAnchor.constraint(equalTo: scrollView.topAnchor).isActive = true
+        stackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor, constant: -20).isActive = true
+        
         let barButton = UIBarButtonItem(customView: button)
         navigationItem.rightBarButtonItem = barButton
     }
@@ -41,6 +53,10 @@ class DetailViewController: UIViewController, Storyboarded {
         }
         descriptionLabel.text = presenter.description
         button.tintColor = presenter.isFavourite ? .orange : .gray
+        foodPairingsLabel.text = presenter.foodPairings
+        maltLabel.text = presenter.maltIngredients
+        hopsLabel.text = presenter.hopsIngredients
+        yeastLabel.text = presenter.yeastIngredients
     }
     
     @objc func toggleFav() {

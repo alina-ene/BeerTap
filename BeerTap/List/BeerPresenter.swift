@@ -14,6 +14,10 @@ protocol BeerPresentable {
     var abv: String { get }
     var imageUrl: URL? { get }
     var description: String { get }
+    var foodPairings: String? { get }
+    var maltIngredients: String? { get }
+    var yeastIngredients: String? { get }
+    var hopsIngredients: String? { get }
 }
 
 class BeerPresenter: BeerPresentable {
@@ -47,5 +51,35 @@ class BeerPresenter: BeerPresentable {
     
     var description: String {
         return beer.description
+    }
+    
+    var foodPairings: String? {
+        return beer.foodPairings?.joined(separator: " - ")
+    }
+    
+    var maltIngredients: String? {
+        var list: [String] = []
+        if let maltList = beer.ingredients?.malt {
+            for item in maltList {
+                let itemString = item.name + " \(item.amount.value) \(item.amount.unit)"
+                list.append(itemString)
+            }
+        }
+        return list.joined(separator: ", ")
+    }
+    
+    var yeastIngredients: String? {
+        return beer.ingredients?.yeast
+    }
+    
+    var hopsIngredients: String? {
+        var list: [String] = []
+        if let maltList = beer.ingredients?.hops {
+            for item in maltList {
+                let itemString = item.name + " \(item.amount.value) \(item.amount.unit)"
+                list.append(itemString)
+            }
+        }
+        return list.joined(separator: ", ")
     }
 }

@@ -21,33 +21,16 @@ struct FailableDecodable<Beer : Decodable> : Decodable {
 struct Beer: Decodable {
     let id: Int
     let name: String
-//    let tagline: String
-//    let firstBrewed: String
     let abv: Double
-//    let ibu: Double
     let icon: String
     let description: String
-//    let foodPairings: [String]?
-//    let brewersTips: String?
-//    let contributor: String?
-//    let ingredients: BeerIngredients?
-//    let method: Method
-//    let boil_volume: Amount
-//    let volume: Amount
-//    let attenuation_level: Int
-//    let ph: Double
-//    let ebc: Double
-//    let srm: Double
-//    let target_fg: Double
-//    let target_og: Double
+    let foodPairings: [String]?
+    let ingredients: BeerIngredients?
     
     enum CodingKeys: String, CodingKey {
-        case id, name, abv, description//, tagline, abv, ibu, description, ingredients, attenuation_level, srm, ph, ebc, target_fg, target_og, boil_volume, volume, method
-//        case contributor = "contributed_by"
-//        case brewersTips = "brewers_tips"
-//        case foodPairings = "food_pairing"
+        case id, name, abv, description, ingredients
+        case foodPairings = "food_pairing"
         case icon = "image_url"
-//        case firstBrewed = "first_brewed"
     }
 }
 
@@ -67,19 +50,4 @@ struct Ingredient: Decodable {
 struct Amount: Decodable {
     let value: Double
     let unit: String
-}
-
-struct Method: Decodable {
-    let mash_temp: MashTemp
-    let fermentation: Fermentation
-    let twist: String?
-}
-
-struct Fermentation: Decodable {
-    let temp: Amount
-}
-
-struct MashTemp: Decodable {
-    let temp: Amount
-    let duration: Int?
 }
